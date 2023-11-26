@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="jsOTP.js"></script>
+        <script>
+            function generateCode() {
+                var code = new jsOTP.totp().getOtp(document.getElementById("key").value);
+                document.getElementById("code").value = code;
+                navigator.clipboard.writeText(code);
+                document.getElementById("notification").innerText = "Copied!";
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Ephemeral TOTP Client</h1>
+        <h3>TOTP Key</h3>
+        <input type="text" id="key"></input>
+        <button onclick="generateCode()">Generate</button>
+        <h3>Code</h3>
+        <input type="text" id="code" readonly></input>
+        <span id="notification"></span>
+    </body>
+</html>
